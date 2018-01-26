@@ -55,6 +55,11 @@ class MAX9744:
                default with the AD1, AD2 pins.
     """
 
+    # Global buffer for writing data.  This saves memory use and prevents
+    # heap fragmentation.  However this is not thread-safe or re-entrant by
+    # design!
+    _BUFFER = bytearray(1)
+
     def __init__(self, i2c, *, address=_MAX9744_DEFAULT_ADDRESS):
         # This device doesn't use registers and instead just accepts a single
         # command string over I2C.  As a result we don't use bus device or
@@ -64,13 +69,13 @@ class MAX9744:
 
     def _write(self, val):
         # Perform a write to update the amplifier state.
-        val &= 0xFF
         try:
             # Make sure bus is locked before write.
             while not self._i2c.try_lock():
                 pass
             # Build bytes to send to device with updated value.
-            self._i2c.writeto(self._address, val)
+            self._BUFFER[0] = val & 0xFF
+            self._i2c.writeto(self._address, self._BUFFER)
         finally:
             # Ensure bus is always unlocked.
             self._i2c.unlock()
