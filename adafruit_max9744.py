@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`Adafruit_MAX9744`
+`adafruit_max9744`
 ====================================================
 
 CircuitPython module for the MAX9744 20W class D amplifier.  See
@@ -36,7 +36,7 @@ __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_MAX9744.git"
 
 #pylint: disable=bad-whitespace
 # Internal constants:
-_MAX9744_DEFAULT_ADDRESS     = const(0b01001011)
+_MAX9744_DEFAULT_ADDRESS     = 0b01001011
 _MAX9744_COMMAND_VOLUME      = const(0b00000000)
 _MAX9744_COMMAND_FILTERLESS  = const(0b01000000)
 _MAX9744_COMMAND_CLASSIC_PWM = const(0b01000001)
@@ -46,13 +46,11 @@ _MAX9744_COMMAND_VOLUME_DOWN = const(0b11000101)
 
 
 class MAX9744:
-    """MAX9744 20 watt class D amplifier.  Construct this by passing the
-    following parameters:
-    - i2c: The I2C bus for the device.
+    """MAX9744 20 watt class D amplifier.
 
-    Optionally specify:
-    - address: The address of the device if it has been overridden from the
-               default with the AD1, AD2 pins.
+        :param ~busio.I2C i2c: The I2C bus for the device.
+        :param int address: The address of the device if it has been overridden from the
+            default with the AD1, AD2 pins.
     """
 
     # Global buffer for writing data.  This saves memory use and prevents
