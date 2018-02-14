@@ -3,9 +3,7 @@ Introduction
 ============
 
 .. image:: https://readthedocs.org/projects/adafruit-circuitpython-max9744/badge/?version=latest
-
     :target: https://circuitpython.readthedocs.io/projects/max9744/en/latest/
-
     :alt: Documentation Status
 
 .. image :: https://img.shields.io/discord/327254708534116352.svg
