@@ -60,7 +60,7 @@ _MAX9744_COMMAND_VOLUME_DOWN = const(0b11000101)
 
 class MAX9744:
     """MAX9744 20 watt class D amplifier.
-    
+
     :param i2c: The I2C bus for the device.
 
     :param address: (Optional) The address of the device if it has been overridden from the
