@@ -20,13 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`Adafruit_MAX9744`
+`adafruit_max9744`
 ====================================================
 
 CircuitPython module for the MAX9744 20W class D amplifier.  See
 examples/simpletest.py for a demo of the usage.
 
 * Author(s): Tony DiCola
+
+Implementation Notes
+--------------------
+
+**Hardware:**
+
+* Adafruit `MAX9744 Stereo 20W Class D Audio Amplifier
+  <https://www.adafruit.com/product/1752>`_ (Product ID: 1752)
+
+**Software and Dependencies:**
+
+* Adafruit CircuitPython firmware for the ESP8622 and M0-based boards:
+  https://github.com/adafruit/circuitpython/releases
 """
 from micropython import const
 
@@ -46,13 +59,12 @@ _MAX9744_COMMAND_VOLUME_DOWN = const(0b11000101)
 
 
 class MAX9744:
-    """MAX9744 20 watt class D amplifier.  Construct this by passing the
-    following parameters:
-    - i2c: The I2C bus for the device.
+    """MAX9744 20 watt class D amplifier.
+    
+    :param i2c: The I2C bus for the device.
 
-    Optionally specify:
-    - address: The address of the device if it has been overridden from the
-               default with the AD1, AD2 pins.
+    :param address: (Optional) The address of the device if it has been overridden from the
+                    default with the AD1, AD2 pins.
     """
 
     # Global buffer for writing data.  This saves memory use and prevents
