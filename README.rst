@@ -10,8 +10,8 @@ Introduction
     :target: https://discord.gg/nBQh6qu
     :alt: Discord
 
-.. image:: https://travis-ci.org/adafruit/Adafruit_CircuitPython_MAX9744.svg?branch=master
-    :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_MAX9744
+.. image:: https://travis-ci.com/adafruit/Adafruit_CircuitPython_MAX9744.svg?branch=master
+    :target: https://travis-ci.com/adafruit/Adafruit_CircuitPython_MAX9744
     :alt: Build Status
 
 CircuitPython module for the MAX9744 20W class D amplifier.
