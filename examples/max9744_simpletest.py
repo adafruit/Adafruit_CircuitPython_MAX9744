@@ -14,17 +14,17 @@ i2c = busio.I2C(board.SCL, board.SDA)
 amp = adafruit_max9744.MAX9744(i2c)
 # Optionally you can specify a different addres if you override the AD1, AD2
 # pins to change the address.
-#amp = adafruit_max9744.MAX9744(i2c, address=0x49)
+# amp = adafruit_max9744.MAX9744(i2c, address=0x49)
 
 # Setting the volume is as easy as writing to the volume property (note
 # you cannot read the property so keep track of volume in your own code if
 # you need it).
 amp.volume = 31  # Volume is a value from 0 to 63 where 0 is muted/off and
-                 # 63 is maximum volume.
+# 63 is maximum volume.
 
 # In addition you can call a function to instruct the amp to move up or down
 # a single volume level.  This is handy if you just have up/down buttons in
 # your project for volume:
-amp.volume_up()    # Increase volume by one level.
+amp.volume_up()  # Increase volume by one level.
 
 amp.volume_down()  # Decrease volume by one level.

@@ -47,15 +47,15 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_MAX9744.git"
 
 
-#pylint: disable=bad-whitespace
+# pylint: disable=bad-whitespace
 # Internal constants:
-_MAX9744_DEFAULT_ADDRESS     = const(0b01001011)
-_MAX9744_COMMAND_VOLUME      = const(0b00000000)
-_MAX9744_COMMAND_FILTERLESS  = const(0b01000000)
+_MAX9744_DEFAULT_ADDRESS = const(0b01001011)
+_MAX9744_COMMAND_VOLUME = const(0b00000000)
+_MAX9744_COMMAND_FILTERLESS = const(0b01000000)
 _MAX9744_COMMAND_CLASSIC_PWM = const(0b01000001)
-_MAX9744_COMMAND_VOLUME_UP   = const(0b11000100)
+_MAX9744_COMMAND_VOLUME_UP = const(0b11000100)
 _MAX9744_COMMAND_VOLUME_DOWN = const(0b11000101)
-#pylint: enable=bad-whitespace
+# pylint: enable=bad-whitespace
 
 
 class MAX9744:
@@ -97,9 +97,13 @@ class MAX9744:
         assert 0 <= volume <= 63
         self._write(_MAX9744_COMMAND_VOLUME | (volume & 0x3F))
 
-    #pylint: disable=line-too-long
-    volume = property(None, _set_volume, "Set the volume of the amplifier.  Specify a value from 0-63 where 0 is muted/off and 63 is maximum volume.")
-    #pylint: enable=line-too-long
+    # pylint: disable=line-too-long
+    volume = property(
+        None,
+        _set_volume,
+        "Set the volume of the amplifier.  Specify a value from 0-63 where 0 is muted/off and 63 is maximum volume.",
+    )
+    # pylint: enable=line-too-long
 
     def volume_up(self):
         """Increase the volume by one level."""
