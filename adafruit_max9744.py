@@ -47,7 +47,6 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_MAX9744.git"
 
 
-# pylint: disable=bad-whitespace
 # Internal constants:
 _MAX9744_DEFAULT_ADDRESS = const(0b01001011)
 _MAX9744_COMMAND_VOLUME = const(0b00000000)
@@ -55,7 +54,6 @@ _MAX9744_COMMAND_FILTERLESS = const(0b01000000)
 _MAX9744_COMMAND_CLASSIC_PWM = const(0b01000001)
 _MAX9744_COMMAND_VOLUME_UP = const(0b11000100)
 _MAX9744_COMMAND_VOLUME_DOWN = const(0b11000101)
-# pylint: enable=bad-whitespace
 
 
 class MAX9744:
