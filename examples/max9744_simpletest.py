@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
+
 # Simple demo of the MAX9744 20W class D amplifier I2C control.
 # This show how to set the volume of the amplifier.
 # Author: Tony DiCola
