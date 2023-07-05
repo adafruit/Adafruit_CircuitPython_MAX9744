@@ -24,6 +24,16 @@ Implementation Notes
 * Adafruit CircuitPython firmware for the ESP8622 and M0-based boards:
   https://github.com/adafruit/circuitpython/releases
 """
+try:
+    # Imports only used for typing.
+
+    # First check if the the typing module exists, to avoid loading
+    # other typing-only modules when running under circuitpython.
+    import typing  # pylint: disable=unused-import
+    import busio
+except ImportError:
+    pass
+
 from micropython import const
 
 __version__ = "0.0.0+auto.0"
@@ -53,14 +63,14 @@ class MAX9744:
     # design!
     _BUFFER = bytearray(1)
 
-    def __init__(self, i2c, *, address=_MAX9744_DEFAULT_ADDRESS):
+    def __init__(self, i2c: busio.I2C, *, address: int = _MAX9744_DEFAULT_ADDRESS):
         # This device doesn't use registers and instead just accepts a single
         # command string over I2C.  As a result we don't use bus device or
         # other abstractions and just talk raw I2C protocol.
         self._i2c = i2c
         self._address = address
 
-    def _write(self, val):
+    def _write(self, val: int) -> None:
         # Perform a write to update the amplifier state.
         try:
             # Make sure bus is locked before write.
@@ -73,7 +83,7 @@ class MAX9744:
             # Ensure bus is always unlocked.
             self._i2c.unlock()
 
-    def _set_volume(self, volume):
+    def _set_volume(self, volume: int) -> None:
         # Set the volume to the specified level (0-63).
         assert 0 <= volume <= 63
         self._write(_MAX9744_COMMAND_VOLUME | (volume & 0x3F))
@@ -82,14 +92,15 @@ class MAX9744:
     volume = property(
         None,
         _set_volume,
+        None,
         "Set the volume of the amplifier.  Specify a value from 0-63 where 0 is muted/off and 63 is maximum volume.",
     )
     # pylint: enable=line-too-long
 
-    def volume_up(self):
+    def volume_up(self) -> None:
         """Increase the volume by one level."""
         self._write(_MAX9744_COMMAND_VOLUME_UP)
 
-    def volume_down(self):
+    def volume_down(self) -> None:
         """Decrease the volume by one level."""
         self._write(_MAX9744_COMMAND_VOLUME_DOWN)
