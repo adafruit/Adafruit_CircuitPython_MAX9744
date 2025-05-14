@@ -24,12 +24,14 @@ Implementation Notes
 * Adafruit CircuitPython firmware for the ESP8622 and M0-based boards:
   https://github.com/adafruit/circuitpython/releases
 """
+
 try:
     # Imports only used for typing.
 
     # First check if the the typing module exists, to avoid loading
     # other typing-only modules when running under circuitpython.
-    import typing  # pylint: disable=unused-import
+    import typing
+
     import busio
 except ImportError:
     pass
@@ -88,14 +90,12 @@ class MAX9744:
         assert 0 <= volume <= 63
         self._write(_MAX9744_COMMAND_VOLUME | (volume & 0x3F))
 
-    # pylint: disable=line-too-long
     volume = property(
         None,
         _set_volume,
         None,
-        "Set the volume of the amplifier.  Specify a value from 0-63 where 0 is muted/off and 63 is maximum volume.",
+        "Set the volume of the amplifier.  Specify a value from 0-63 where 0 is muted/off and 63 is maximum volume.",  # noqa: E501
     )
-    # pylint: enable=line-too-long
 
     def volume_up(self) -> None:
         """Increase the volume by one level."""
